@@ -1,0 +1,9 @@
+<body>
+<?php 
+$this->display_header();
+$this->display_topmenu();
+$this->display_contextmenu();
+$this->display_content();
+$this->display_footer();
+?>
+</body></html>
