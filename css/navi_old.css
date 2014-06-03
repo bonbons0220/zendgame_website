@@ -45,7 +45,7 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 
 #topnav li a:hover, #topnav ul li.active a{
 	color:#FFFFFF;
-	background-color:#8F74E7;
+	background-color:#059BD8;
 	}
 	
 #topnav li li a:link, #topnav li li a:visited{
@@ -61,7 +61,7 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 	
 #topnav li li a:hover{
 	color:#FFFFFF;
-	background-color:#8F74E7;
+	background-color:#059BD8;
 	}
 
 #topnav li ul{
@@ -126,7 +126,7 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 	border-bottom:1px dotted #666666;
 	}
 
-#column .subnav a:hover{color:#7295E6; background-color:#F9F9F9;}
+#column .subnav a:hover{color:#2684B7; background-color:#F9F9F9;}
 
 #column .subnav ul ul a, #column .subnav ul ul ul a, #column .subnav ul ul ul ul a, #column .subnav ul ul ul ul ul a{background:url("../images/black_file.gif") no-repeat #F9F9F9;}
 #column .subnav ul ul a{padding-left:40px; background-position:30px center;}

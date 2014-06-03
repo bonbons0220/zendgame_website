@@ -1,4 +1,4 @@
-p<?php
+<?php
 class home extends page
 {
 	public $title = 'ZendGame Home';

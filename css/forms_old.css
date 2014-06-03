@@ -19,7 +19,7 @@ legend{display:none;}
 	padding:5px;
 	color:#4C4C4C;
 	background-color:#FFFFFF;
-	border:1px solid #3D3263;
+	border:1px solid #396B86;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
 	}
@@ -32,7 +32,7 @@ legend{display:none;}
 	font-weight:bold;
 	text-transform:uppercase;
 	color:#FFFFFF;
-	background-color:#0E8A8A;
+	background-color:#4D9FC7;
 	cursor:pointer;
 	}
 
@@ -58,8 +58,8 @@ legend{display:none;}
 	padding:4px 0;
 	text-transform:uppercase;
 	color:#FFFFFF;
-	background-color:#8F74E7;
-	border-color:#3D3263;
+	background-color:#059BD8;
+	border-color:#396B86;
 	cursor:pointer;
 	font-weight:bold;
 	}
@@ -99,8 +99,8 @@ legend{display:none;}
 	margin:0 0 10px 0;
 	padding:5px;
 	color:#FFFFFF;
-	background-color:#7295E6;
-	border:1px solid #1E439A;
+	background-color:#2684B7;
+	border:1px solid #1C5E82;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
 	}
