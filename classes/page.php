@@ -10,9 +10,10 @@ class page
 	//the basics vars that are only set in class:page
 	public $debug=true;
 	public $base_url = 'http://www.zendgame.com/';
-	public $company = 'zendgame.com';
-	public $email = 'bonnie@zendgame.com';
-	public $phone = '(410)262-5245';
+	public $zendCompany = 'zendgame.com';
+	public $zendToEmail = 'bonnie@zendgame.com';
+	public $zendFromEmail = 'info@zendgame.com';
+	public $zendPhone = '(410)262-5245';
 
 	//attributes that will probably be overridden in children
 	public $title = 'ZendGame: Building Your Online Presence';
@@ -24,6 +25,7 @@ class page
 //							'example sites'=>'examples',
 							'contact us'=>'contact');
 	public $pagename = 'page';
+	public $errorMessage = '';
 	
 	/****************************************************************/
 	/* THE BASICS */
@@ -49,31 +51,31 @@ class page
 	/****************************************************************/
 	public function display() 
 	{
-		$this->display_head();
-		$this->display_body();
+		$this->displayHead();
+		$this->displayBody();
 	}
 
-	public function display_head() 
+	public function displayHead() 
 	{
 		echo "<html>\n<head>\n";
-		$this->display_title();
-		$this->display_meta();
-		$this->display_links();
+		$this->displayTitle();
+		$this->displayMeta();
+		$this->displayLinks();
 		echo "</head>\n";
 	}
 
-	public function display_title() 
+	public function displayTitle() 
 	{
 		echo "<title>$this->title</title>";
 	}
 
-	public function display_meta() 
+	public function displayMeta() 
 	{
 		echo "<meta name=\"keywords\" content=\" ". $this->keywords . "\"/>\n";
 		echo "<meta name=\"google-site-verification\" content=\"-aaNdx2nPpDRhp-gm-Jw1PY3wZP5wXCbQrAzugli94U\" />\n";
 	}
 
-	public function display_links() 
+	public function displayLinks() 
 	{
 		echo "<link rel=\"stylesheet\" href=\"/css/layout.css?v=1.3\" media=\"screen\"/>\n";
 		echo "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js\"></script>\n";
@@ -84,24 +86,24 @@ class page
 	/****************************************************************/
 	/* METHODS TO DISPLAY THE BODY OF THE PAGE */
 	/****************************************************************/
-	public function display_body() 
+	public function displayBody() 
 	{
 		echo "<body id=\"top\">";
-		$this->display_header();
-		$this->display_topbar();
-		$this->display_content();
-		$this->display_footer();
+		$this->displayHeader();
+		$this->displayTopbar();
+		$this->displayContent();
+		$this->displayFooter();
 		echo "</body></html>";
 	}
 	
-	public function display_header() 
+	public function displayHeader() 
 	{
 		?>
 		<div class="wrapper col1">
 		<div id="header">
 		<?php	
-		$this->display_logo();
-		$this->display_newsletter();
+		$this->displayLogo();
+		$this->displayNewsletter();
 		?>
 		<br class="clear" />
 		</div>
@@ -109,17 +111,17 @@ class page
 		<?php	
 	}
 	
-	public function display_logo() 
+	public function displayLogo() 
 	{
 		?>
 		<div id="logo">
-		<h1><a href="#">Zendgame</a></h1>
+		<h1><a href=".">Zendgame</a></h1>
 		<p><strong>Building Your Online Presence</strong></p>	
 		</div>
 		<?php
 	}
 	
-	public function display_newsletter() 
+	public function displayNewsletter() 
 	{
 		?>
 		<div id="newsletter">
@@ -144,14 +146,14 @@ class page
 		<?php
 	}
 	
-	public function display_topbar() 
+	public function displayTopbar() 
 	{
 		?>
 		<div class="wrapper col2">
 		<div id="topbar">
 		<?php
-		$this->display_topmenu();
-		//$this->display_search();
+		$this->displayTopmenu();
+		//$this->displaySearch();
 		?>
 		</div>
 		</div>
@@ -159,7 +161,27 @@ class page
 		<?php
 	}
 	
-	public function display_search() 
+	public function displayErrorMessage() 
+	{
+		if (isset($this->data_error) && strlen($this->data_error)>0) {
+		?>
+			<div class="error">
+			<p><?php echo $this->errorMessage[$this->data_error]; ?></p>
+			</div>
+		<br class="clear" />
+		<?php
+		}
+		if (isset($this->data_message) && strlen($this->data_message)>0) {
+		?>
+			<div class="info">
+			<p><?php echo $this->infoMessage[$this->data_message]; ?></p>
+			</div>
+		<br class="clear" />
+		<?php
+		}
+	}
+	
+	public function displaySearch() 
 	{
 		?>
 		<div id="search">
@@ -174,7 +196,7 @@ class page
 		<?php
 	}
 	
-	public function display_topmenu() 
+	public function displayTopmenu() 
 	{
 		?>
 		<div id="topnav">
@@ -182,11 +204,12 @@ class page
 		<?php
 		foreach ($this->topmenu as $key => $value) {
 			$thisclass = (strpos($this->pagename,$value)===0) ? " class=\"active\"" : "" ;
-			if (strpos($value,"contact")===0) {
+			/*if (strpos($value,"contact")===0) {
 				echo "<li $thisclass><a href=\"mailto:bonnie@zendgame.com\" target=\"_blank\">$key</a></li>\n";
 			} else {
 				echo "<li $thisclass><a href=\"$value.html\">$key</a></li>\n";
-			}
+			}*/
+			echo "<li $thisclass><a href=\"$value.html\">$key</a></li>\n";
 		}
 		?>
 		</ul>
@@ -195,13 +218,14 @@ class page
 	}
 	
 	//generally overridden by other pages
-	public function display_content() 
+	public function displayContent() 
 	{
 		?>
 		<div class="wrapper col5">
 		  <div id="container">
 			<div id="content">
 		<?php
+			$this->displayErrorMessage();
 			$this->content = "<h2>Content</h2>";
 			$this->content .= "<p>Description</p>";
 		?>
@@ -212,7 +236,7 @@ class page
 		<?php
 	}
 
-	public function display_footer() 
+	public function displayFooter() 
 	{
 	?>
 		<div class="wrapper col7">
@@ -225,14 +249,31 @@ class page
 		<?php
 	}
 
+	public function doAction() {
+		echo "<!-- no actions for this page -->";
+		return;
+	}
+
+	public function getPostVars() {
+		foreach ($_POST as $key=>$value) {
+			$varname = "data_".$key;
+			$this->$varname = $value;
+		}
+		foreach ($_GET as $key=>$value) {
+			$varname = "data_".$key;
+			$this->$varname = $value;
+		}
+	}
+
 	/****************************************************************/
 	/* STATIC FUNCTIONS */
 	/****************************************************************/
-	static function getpage() {
+	static function getPage() {
 		$trypage = isset($_GET['p']) ? $_GET['p'] : 'home';
 		$trypage = filter_var(trim($trypage), FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 		$trypage = filter_var($trypage, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
 		return $trypage;
 	}
+
 }
 ?>

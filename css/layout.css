@@ -525,3 +525,16 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 	margin:0;
 	padding:0;
 	}
+
+/* ----------------------------------------------Fonts-------------------------------------*/
+.error {
+	font-weight:bold;
+	text-align:center;
+	color:red;
+}	
+.info {
+	font-weight:bold;
+	text-align:center;
+	color:black;
+}	
+	

@@ -1,7 +1,7 @@
 <?php
 class session
 {  	
-	public $logged_in = false;
+	public $loggedIn = false;
 	
 	public function __construct()
 	{
