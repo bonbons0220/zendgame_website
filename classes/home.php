@@ -6,8 +6,9 @@ class home extends page
 
 	public function displayContent() 
 	{
-		include_once($this->pagename."inc.php");
+		$this->displayWrapper("col3","intro");
+		$this->displayWrapper("col4","services");
+		$this->displayWrapper("col5","container");
 	}
-
 }
 ?>

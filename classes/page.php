@@ -77,10 +77,21 @@ class page
 
 	public function displayLinks() 
 	{
-		echo "<link rel=\"stylesheet\" href=\"/css/layout.css?v=1.3\" media=\"screen\"/>\n";
-		echo "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js\"></script>\n";
-		echo "<script type=\"text/javascript\" src=\"/js/core.js\" ></script>\n";
-		echo "<link rel=\"icon\" href=\"/favicon.ico\" type=\"image/x-icon\"/>\n";
+		?>
+		<link rel="stylesheet" href="/css/layout.css?v=1.3" media="screen"/>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/core.js" ></script>
+		<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-51728750-1', 'zendgame.com');
+		  ga('send', 'pageview');
+		</script>
+		<?php
 	}
 
 	/****************************************************************/
@@ -98,67 +109,12 @@ class page
 	
 	public function displayHeader() 
 	{
-		?>
-		<div class="wrapper col1">
-		<div id="header">
-		<?php	
-		$this->displayLogo();
-		$this->displayNewsletter();
-		?>
-		<br class="clear" />
-		</div>
-		</div>
-		<?php	
-	}
-	
-	public function displayLogo() 
-	{
-		?>
-		<div id="logo">
-		<h1><a href=".">Zendgame</a></h1>
-		<p><strong>Building Your Online Presence</strong></p>	
-		</div>
-		<?php
-	}
-	
-	public function displayNewsletter() 
-	{
-		?>
-		<div id="newsletter">
-		  <p>Sign up to our newsletter for the latest news.</p>
-		  <form action="http://zendgame.us8.list-manage.com/subscribe/post?u=c5e8db5cd2314dbcf36b1a7d1&amp;id=f0a1256bc7" 
-		  method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
-		  novalidate autocomplete="off">
-			<fieldset>
-			  <legend>NewsLetter</legend>
-			  <input type="text" name="FNAME" id="mce-FNAME" value="Name&hellip;"  onfocus="this.value=(this.value=='Name&hellip;')? '' : this.value ;" />
-			  <input type="email" name="EMAIL" id="mce-EMAIL" value="Email&hellip;"  onfocus="this.value=(this.value=='Email&hellip;')? '' : this.value ;" />
-				<div id="mce-responses" class="clear">
-					<div class="response" id="mce-error-response" style="display:none"></div>
-					<div class="response" id="mce-success-response" style="display:none"></div>
-				</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-				<div style="position: absolute; left: -5000px;"><input type="text" name="b_c5e8db5cd2314dbcf36b1a7d1_f0a1256bc7" tabindex="-1" value="">
-				</div>
-				<div class="clear"><input type="submit" value="Sign Up" name="subscribe" id="news_go"></div>
-			</fieldset>
-			</form>
-		</div>
-		<?php
+		$this->displayWrapper("col1","header","header.php");
 	}
 	
 	public function displayTopbar() 
 	{
-		?>
-		<div class="wrapper col2">
-		<div id="topbar">
-		<?php
-		$this->displayTopmenu();
-		//$this->displaySearch();
-		?>
-		</div>
-		</div>
-		<br class="clear" />
-		<?php
+		$this->displayWrapper("col2","topbar","topbar.php");
 	}
 	
 	public function displayErrorMessage() 
@@ -181,72 +137,33 @@ class page
 		}
 	}
 	
-	public function displaySearch() 
-	{
-		?>
-		<div id="search">
-		  <form action="#" method="post">
-			<fieldset>
-			  <legend>Site Search</legend>
-			  <input type="text" value="Search Zendgame&hellip;"  onfocus="this.value=(this.value=='Search Zendgame&hellip;')? '' : this.value ;" />
-			  <input type="submit" name="go" id="go" value="Search" />
-			</fieldset>
-		  </form>
-		</div>
-		<?php
-	}
-	
-	public function displayTopmenu() 
-	{
-		?>
-		<div id="topnav">
-		<ul>
-		<?php
-		foreach ($this->topmenu as $key => $value) {
-			$thisclass = (strpos($this->pagename,$value)===0) ? " class=\"active\"" : "" ;
-			/*if (strpos($value,"contact")===0) {
-				echo "<li $thisclass><a href=\"mailto:bonnie@zendgame.com\" target=\"_blank\">$key</a></li>\n";
-			} else {
-				echo "<li $thisclass><a href=\"$value.html\">$key</a></li>\n";
-			}*/
-			echo "<li $thisclass><a href=\"$value.html\">$key</a></li>\n";
-		}
-		?>
-		</ul>
-		</div>
-		<?php
-	}
-	
 	//generally overridden by other pages
 	public function displayContent() 
 	{
-		?>
-		<div class="wrapper col5">
-		  <div id="container">
-			<div id="content">
-		<?php
-			$this->displayErrorMessage();
-			$this->content = "<h2>Content</h2>";
-			$this->content .= "<p>Description</p>";
-		?>
-			<br class="clear" />
-			</div>
-		  </div>
-		</div>
-		<?php
+		$this->displayWrapper("col5","container");
 	}
 
 	public function displayFooter() 
 	{
-	?>
-		<div class="wrapper col7">
-		  <div id="copyright">
-			<p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">zendgame.com</a></p>
-			<p class="fl_right">Template by <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
-			<br class="clear" />
-		  </div>
-		</div>
-		<?php
+		$this->displayWrapper("col6","footer","footer.php");
+		$this->displayWrapper("col7","copyright","copyright.php");
+	}
+
+	public function displayWrapper($col,$id,$fname=FALSE) 
+	{
+		$fname=($fname===FALSE)?'./pages/'.$this->pagename.$col.".php":'./pages/'.$fname;
+		if (file_exists($fname)) {
+			?>
+			<div class="wrapper <?php echo $col; ?>">
+				<div id="<?php echo $id; ?>">
+				<?php include($fname);?>
+				<br class="clear" />
+				</div>
+			</div>
+			<?php
+		} else {
+			echo "<!-- could not find $fname -->\n";
+		}
 	}
 
 	public function doAction() {

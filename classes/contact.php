@@ -4,15 +4,10 @@ class contact extends page
 	public $title = 'ZendGame Contact Us';
 	public $pagename = 'contact';
 	public $errorMessage = Array(
-		'blank'=>"We're guessing you don't really want to send us a blank message. Want to try again?");
+		'blank'=>"We're guessing you don't really want to send a blank message. Want to try again?");
 	public $infoMessage = Array(
 		'thanks'=>"Thanks for contacting us. We'll be in touch soon!");
 
-	public function displayContent() 
-	{
-		include_once($this->pagename."inc.php");
-	}
-	
 	public function doAction() {
 		switch ($this->data_action) {
 		case "send":

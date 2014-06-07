@@ -1,5 +1,3 @@
-<div class="wrapper col5">
-  <div id="container">
     <div id="content">
 	  <?php $this->displayErrorMessage(); ?>
       <h2>Drop Us a Line</h2>
@@ -32,6 +30,3 @@
         <p>Zendgame LLC <br />57 Murdock Rd. <br />Baltimore, MD 21212 <br />USA</p>
       </div>
     </div>
-    <div class="clear"></div>
-  </div>
-</div>
